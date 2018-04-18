@@ -1,0 +1,19 @@
+# Decimal2Hex 10进制数转为16进制数
+
+Decimal number convert to hex number in recursive way
+
+char hex2char(int x) {
+	char hex[] = "123456789abcdef";
+	int len = sizeof(hex);
+	for (int i = 0; i < len; i++) {
+		if (x == i)
+			return hex[i];
+	}
+}
+
+void decimal2hex(int n) {
+	if (n >= 16) {
+		decimal2hex(n / 16);
+	}
+	putchar(hex2char(n % 16));
+}
