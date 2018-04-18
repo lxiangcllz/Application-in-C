@@ -16,6 +16,24 @@ void inverseString(char *src) { //non-recursive
 	return;
 }
 
+//翻转参数字符串的字符序列，和上面的函数思路一样
+void reverse_string(char *string) {
+	char *last_string;
+
+	//让last_string指向参数字符串的最后一个字符
+	for(last_string = string; *last_string != '\0'; last_string++)
+		;
+	last_string--;
+
+	while(last_string != string) { //or while(last_string < string)
+		char temp;
+
+		temp = *string;
+		*string++ = *last_string;
+		*last_string-- = *temp;
+	}
+}
+
 void inverseString2(char *src) { //recursive
 	//char *p = src + strlen(src) - 1;
 	if (*src != '\0') {
@@ -29,10 +47,6 @@ void inverseString3(char *src, char *dst) { //another recursive version
 		inverseString3(src + 1, dst);
 	}
 	strncat(dst, src, 1);
-}
-
-void const_test(const int *a) {
-	*((int *)a) = 30;
 }
 
 int main() {
